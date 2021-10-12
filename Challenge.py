@@ -283,7 +283,6 @@ def generateLastDaysPaths(date, days):
 
     day_count = (end_date - start_date).days 
     for single_date in [d for d in (start_date + timedelta(n) for n in range(day_count)) if d <= end_date]:
-           #print(os.path.expandvars('https://importantdata@location/'+ str(single_date) + '/'))
            print(os.path.expandvars('https://importantdata@location/'+ str(single_date.strftime("%Y/%m/%d")) + '/'))
     return
 
