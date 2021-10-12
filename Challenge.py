@@ -13,12 +13,11 @@ import os
 
 # COMMAND ----------
 
-dfSellers=spark.read.json("dbfs:/mnt/raw-data/DIP/GDA/SELLERS/")
+#DESAFIO 3
 
 # COMMAND ----------
 
-# MAGIC %sql
-# MAGIC drop table DB_SELLERS.sellers
+dfSellers=spark.read.json("dbfs:/mnt/raw-data/DIP/GDA/SELLERS/")
 
 # COMMAND ----------
 
@@ -279,10 +278,13 @@ import os
 def generateLastDaysPaths(date, days):
     end_date = datetime(year=int(date[0:4]), month=int(date[4:6]), day=int(date[6:8]))
     start_date = end_date - timedelta(days=n)
+    
+  
 
     day_count = (end_date - start_date).days 
     for single_date in [d for d in (start_date + timedelta(n) for n in range(day_count)) if d <= end_date]:
-           print(os.path.expandvars('https://importantdata@location/'+ str(single_date) + '/'))
+           #print(os.path.expandvars('https://importantdata@location/'+ str(single_date) + '/'))
+           print(os.path.expandvars('https://importantdata@location/'+ str(single_date.strftime("%Y/%m/%d")) + '/'))
     return
 
 # COMMAND ----------
